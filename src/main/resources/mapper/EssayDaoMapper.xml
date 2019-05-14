@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.studio.yishujutan.dao.EssayDao">
+
+    <insert id="insertIntoEssay" parameterType="com.studio.yishujutan.entity.Essay">
+      insert into essay (essay_id,essay_tittle,essay_content,user_id)
+      values (#{essay_id},#{essay_title},#{essay_content},#{user_id})
+    </insert>
+
+    <select id="selectEssaysByHotDegree" parameterType="int" resultType="com.studio.yishujutan.entity.Essay">
+        select essay_title,user_id,essay_content,hava_picture,essay_picture from essay order by hot_degree desc limit #{number};
+    </select>
+
+</mapper>
