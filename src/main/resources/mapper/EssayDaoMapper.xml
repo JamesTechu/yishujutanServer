@@ -9,7 +9,22 @@
     </insert>
 
     <select id="selectEssaysByHotDegree" parameterType="int" resultType="com.studio.yishujutan.entity.Essay">
-        select essay_title,user_id,essay_content,hava_picture,essay_picture from essay order by hot_degree desc limit #{number};
+        select essay_title,user_id,essay_content,hava_picture,essay_picture
+        from essay order by hot_degree desc limit #{number};
     </select>
+
+    <select id="selectEssaysByFollows" resultType="com.studio.yishujutan.entity.Essay">
+        select essay_title,user_id,essay_content,hava_picture,essay_picture
+        from essay
+        where user_id in
+              (select object_id from follow where user_id = #{user_id})
+        order by issue_date desc limit #{number};
+    </select>
+
+    <select id="selectLastEssayById" parameterType="String" resultType="com.studio.yishujutan.entity.Essay">
+        select essay_content,issue_date from essay where user_id = #{user_id} order by issue_date desc limit 1;
+    </select>
+
+
 
 </mapper>

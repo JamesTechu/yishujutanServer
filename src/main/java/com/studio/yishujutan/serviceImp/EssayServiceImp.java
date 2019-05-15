@@ -24,5 +24,15 @@ public class EssayServiceImp implements EssayService {
         return essayDao.selectEssaysByHotDegree(number);
     }
 
+    @Override
+    public List<Essay> selectEssaysByFollows(int number, String user_id) {
+        return essayDao.selectEssaysByFollows(number, user_id);
+    }
+
+    @Override
+    public Essay selectLastEssayById(String user_id) {
+        return essayDao.selectLastEssayById(user_id);
+    }
+
 
 }

@@ -31,32 +31,22 @@ public class GetEssaysByShowType {
 
         int number = Integer.parseInt(request.getParameter("number"));
         String showType = request.getParameter("showType");
+        String user_id = request.getParameter("user_id");
+
+        List<Essay> essays = null;
         switch (showType){
             case "f":
-                response = showFollowsEssay(number).toString();
+                essays = essayService.selectEssaysByFollows(number, user_id);
                 break;
             case "r":
-                response = showRecommendEssay(number).toString();
                 break;
             case "h":
-                response = showHotEssay(number).toString();
+                essays = essayService.selectEssaysByHotDegree(number);
                 break;
         }
-        return response;
-    }
-
-    public JSONArray showFollowsEssay(int number){
-        jsonArray = new JSONArray();
-        return jsonArray;
-    }
-
-    public JSONArray showRecommendEssay(int number){
-        jsonArray = new JSONArray();
-        return jsonArray;
-    }
-
-    public JSONArray showHotEssay(int number){
-        List<Essay> essays = essayService.selectEssaysByHotDegree(number);
+        if (essays == null) {
+            return "no essay";
+        }
         int realNumber = essays.size();
         JSONObject jsonObject;
         Essay essay;
@@ -76,6 +66,7 @@ public class GetEssaysByShowType {
             jsonObject.put("dislike_number", 83);
             jsonArray.add(jsonObject);
         }
-        return jsonArray;
+        return jsonArray.toString();
     }
+
 }
