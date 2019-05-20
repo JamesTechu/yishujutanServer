@@ -17,4 +17,5 @@ public interface EssayDao {
 
     Essay selectLastEssayById(String user_id);
 
+    List<Essay> selectEssaysById(@Param("number")int number, @Param("user_id")String user_id);
 }

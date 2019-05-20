@@ -34,5 +34,10 @@ public class EssayServiceImp implements EssayService {
         return essayDao.selectLastEssayById(user_id);
     }
 
+    @Override
+    public List<Essay> selectEssaysById(int number, String user_id) {
+        return essayDao.selectEssaysById(number, user_id);
+    }
+
 
 }

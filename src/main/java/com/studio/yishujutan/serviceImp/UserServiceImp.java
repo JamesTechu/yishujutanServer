@@ -16,4 +16,9 @@ public class UserServiceImp implements UserService {
     public User getUserIconAndNickNameById(String user_id) {
         return userDao.getUserIconAndNickNameById(user_id);
     }
+
+    @Override
+    public User getUserPageInfo(String user_id) {
+        return userDao.getUserPageInfo(user_id);
+    }
 }

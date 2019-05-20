@@ -22,9 +22,9 @@ public class GetEssaysByShowType {
     @Autowired
     UserService userService;
 
-    private String response = "";
     private String address = "http://yishujutan.free.idcfengye.com";
     private JSONArray jsonArray;
+    private Tool tool;
 
     @GetMapping("/getEssaysByShowType")
     public String getEssaysByShowType(HttpServletRequest request){
@@ -32,6 +32,7 @@ public class GetEssaysByShowType {
         int number = Integer.parseInt(request.getParameter("number"));
         String showType = request.getParameter("showType");
         String user_id = request.getParameter("user_id");
+        tool = new Tool();
 
         List<Essay> essays = null;
         switch (showType){
@@ -55,15 +56,7 @@ public class GetEssaysByShowType {
         for (int i = 0; i < realNumber; i++){
             essay = essays.get(i);
             user = userService.getUserIconAndNickNameById(essay.getUser_id());
-            jsonObject = new JSONObject();
-            jsonObject.put("title", essay.getEssay_title());
-            jsonObject.put("userIcon", address + user.getIcon());
-            jsonObject.put("nickname", user.getNickname());
-            jsonObject.put("content", essay.getEssay_content());
-            jsonObject.put("share_number", 52);
-            jsonObject.put("comment_number", 62);
-            jsonObject.put("praise_number", 24);
-            jsonObject.put("dislike_number", 83);
+            jsonObject = tool.makeEssaysJson(essay, user, address);
             jsonArray.add(jsonObject);
         }
         return jsonArray.toString();

@@ -47,6 +47,7 @@ public class GetFollows {
             essay = essayService.selectLastEssayById(user.getUser_id());
             jsonObject = new JSONObject();
             jsonObject.put("id", i);
+            jsonObject.put("user_id", user.getUser_id());
             jsonObject.put("icon", address + user.getIcon());
             jsonObject.put("nickname", user.getNickname());
             String content;

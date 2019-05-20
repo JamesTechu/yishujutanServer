@@ -25,6 +25,12 @@
         select essay_content,issue_date from essay where user_id = #{user_id} order by issue_date desc limit 1;
     </select>
 
+    <select id="selectEssaysById" resultType="com.studio.yishujutan.entity.Essay">
+        select essay_title,essay_content,hava_picture,essay_picture
+        from essay
+        where user_id = #{user_id} limit 5;
+    </select>
+
 
 
 </mapper>

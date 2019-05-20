@@ -14,11 +14,12 @@ public class Browse {
     private String browse_date;
     private String browse_content;
     private String book_category;
+    private int browse_number;
 
     public Browse() {
     }
 
-    public Browse(String browse_id, String user_id, String browse_object, String object_id, String browse_date, String browse_content, String book_category) {
+    public Browse(String browse_id, String user_id, String browse_object, String object_id, String browse_date, String browse_content, String book_category, int browse_number) {
         this.browse_id = browse_id;
         this.user_id = user_id;
         this.browse_object = browse_object;
@@ -26,5 +27,6 @@ public class Browse {
         this.browse_date = browse_date;
         this.browse_content = browse_content;
         this.book_category = book_category;
+        this.browse_number = browse_number;
     }
 }

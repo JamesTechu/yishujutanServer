@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.studio.yishujutan.dao.BrowseDao">
+
+    <select id="getCircleIds" resultType="String">
+        select object_id from browse where browse_object = 'circle' and user_id = #{user_id} limit #{number};
+    </select>
+
+</mapper>
