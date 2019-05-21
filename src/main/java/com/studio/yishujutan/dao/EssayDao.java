@@ -18,4 +18,7 @@ public interface EssayDao {
     Essay selectLastEssayById(String user_id);
 
     List<Essay> selectEssaysById(@Param("number")int number, @Param("user_id")String user_id);
+
+    //根据circle_id获取贴子
+    List<Essay> selectEssaysByCircleId(@Param("circle_id")String circle_id, @Param("number1")int number1, @Param("number2")int number2);
 }

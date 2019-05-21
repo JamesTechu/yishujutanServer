@@ -31,6 +31,14 @@
         where user_id = #{user_id} limit 5;
     </select>
 
+    <select id="selectEssaysByCircleId" resultType="com.studio.yishujutan.entity.Essay">
+        select essay_id,user_id,essay_title,essay_content,hava_picture,essay_picture
+        from essay
+        where essay_status = 'circle' and circle_id = #{circle_id}
+        order by issue_date desc
+        limit #{number1},#{number2}
+    </select>
+
 
 
 </mapper>

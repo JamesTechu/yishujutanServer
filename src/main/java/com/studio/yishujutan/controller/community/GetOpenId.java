@@ -1,4 +1,4 @@
-package com.studio.yishujutan.controller;
+package com.studio.yishujutan.controller.community;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

@@ -1,4 +1,4 @@
-package com.studio.yishujutan.controller;
+package com.studio.yishujutan.controller.community;
 
 import com.studio.yishujutan.service.PictureService;
 import org.springframework.beans.factory.annotation.Autowired;

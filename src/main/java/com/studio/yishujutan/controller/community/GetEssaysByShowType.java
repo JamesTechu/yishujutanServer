@@ -1,7 +1,8 @@
-package com.studio.yishujutan.controller;
+package com.studio.yishujutan.controller.community;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.studio.yishujutan.controller.tool.JsonTool;
 import com.studio.yishujutan.entity.Essay;
 import com.studio.yishujutan.entity.User;
 import com.studio.yishujutan.service.EssayService;
@@ -24,7 +25,7 @@ public class GetEssaysByShowType {
 
     private String address = "http://yishujutan.free.idcfengye.com";
     private JSONArray jsonArray;
-    private Tool tool;
+    private JsonTool jsonTool;
 
     @GetMapping("/getEssaysByShowType")
     public String getEssaysByShowType(HttpServletRequest request){
@@ -32,7 +33,7 @@ public class GetEssaysByShowType {
         int number = Integer.parseInt(request.getParameter("number"));
         String showType = request.getParameter("showType");
         String user_id = request.getParameter("user_id");
-        tool = new Tool();
+        jsonTool = new JsonTool();
 
         List<Essay> essays = null;
         switch (showType){
@@ -56,7 +57,7 @@ public class GetEssaysByShowType {
         for (int i = 0; i < realNumber; i++){
             essay = essays.get(i);
             user = userService.getUserIconAndNickNameById(essay.getUser_id());
-            jsonObject = tool.makeEssaysJson(essay, user, address);
+            jsonObject = jsonTool.makeEssayJson(essay, user, address);
             jsonArray.add(jsonObject);
         }
         return jsonArray.toString();

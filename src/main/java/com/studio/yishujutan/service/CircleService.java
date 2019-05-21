@@ -7,4 +7,6 @@ public interface CircleService {
 
     List<Circle> getCirclesIconAndName(String[] circle_id);
 
+    Circle getCircleInfo(String circle_id);
+
 }

@@ -18,8 +18,13 @@ public class Essay {
     private int hot_degree;
     private int have_picture;
     private String essay_picture;
+    private String circle_id;
+    private int share_number;
+    private int comment_number;
+    private int praise_number;
+    private int dislike_number;
 
-    public Essay(String essay_id, String essay_title, String essay_content, String essay_description, String user_id, String issue_date, String essay_status, String essay_category, int hot_degree, int have_picture, String essay_picture) {
+    public Essay(String essay_id, String essay_title, String essay_content, String essay_description, String user_id, String issue_date, String essay_status, String essay_category, int hot_degree, int have_picture, String essay_picture, String circle_id, int share_number, int comment_number, int praise_number, int dislike_number) {
         this.essay_id = essay_id;
         this.essay_title = essay_title;
         this.essay_content = essay_content;
@@ -31,6 +36,11 @@ public class Essay {
         this.hot_degree = hot_degree;
         this.have_picture = have_picture;
         this.essay_picture = essay_picture;
+        this.circle_id = circle_id;
+        this.share_number = share_number;
+        this.comment_number = comment_number;
+        this.praise_number = praise_number;
+        this.dislike_number = dislike_number;
     }
 
     public Essay(String essay_id, String title, String content, String user_id) {

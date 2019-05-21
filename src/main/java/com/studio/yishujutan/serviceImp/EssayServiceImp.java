@@ -39,5 +39,10 @@ public class EssayServiceImp implements EssayService {
         return essayDao.selectEssaysById(number, user_id);
     }
 
+    @Override
+    public List<Essay> selectEssaysByCircleId(String circle_id, int number1, int number2) {
+        return essayDao.selectEssaysByCircleId(circle_id, number1, number2);
+    }
+
 
 }

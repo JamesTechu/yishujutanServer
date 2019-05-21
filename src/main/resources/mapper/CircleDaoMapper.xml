@@ -11,4 +11,9 @@
         </foreach>
     </select>
 
+    <select id="getCircleInfo" parameterType="String" resultType="com.studio.yishujutan.entity.Circle">
+        select circle_id,circle_name,circle_category,circle_description,circle_bg
+        from circle where circle_id = #{circle_id}
+    </select>
+
 </mapper>

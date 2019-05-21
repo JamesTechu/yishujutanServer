@@ -2,7 +2,7 @@ package com.studio.yishujutan.controller.community;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.studio.yishujutan.controller.Tool;
+import com.studio.yishujutan.controller.tool.JsonTool;
 import com.studio.yishujutan.entity.Essay;
 import com.studio.yishujutan.entity.User;
 import com.studio.yishujutan.service.EssayService;
@@ -12,9 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -27,12 +24,12 @@ public class GetUserPageInfo {
     EssayService essayService;
 
     private String address = "http://yishujutan.free.idcfengye.com";
-    private Tool tool;
+    private JsonTool jsonTool;
 
     @GetMapping("/getUserPageInfo")
     public String doGet(HttpServletRequest request){
 
-        tool = new Tool();
+        jsonTool = new JsonTool();
         String user_id = request.getParameter("user_id");
         User user = userService.getUserPageInfo(user_id);
         JSONObject userinfoJson = new JSONObject();
@@ -54,7 +51,7 @@ public class GetUserPageInfo {
         Essay essay;
         for (int i = 0; i < realNumber; i++){
             essay = essays.get(i);
-            essaysJson = tool.makeEssaysJson(essay, user, address);
+            essaysJson = jsonTool.makeEssayJson(essay, user, address);
             jsonArray.add(essaysJson);
         }
 

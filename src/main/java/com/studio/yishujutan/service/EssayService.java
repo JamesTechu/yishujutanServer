@@ -15,4 +15,6 @@ public interface EssayService {
     Essay selectLastEssayById(String user_id);
 
     List<Essay> selectEssaysById(int number, String user_id);
+
+    List<Essay> selectEssaysByCircleId(String circle_id, int number, int numebr2);
 }

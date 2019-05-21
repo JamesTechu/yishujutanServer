@@ -1,4 +1,4 @@
-package com.studio.yishujutan.controller;
+package com.studio.yishujutan.controller.community;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
