@@ -10,4 +10,10 @@ public interface UserDao {
     User getUserIconAndNickNameById(String user_id);
 
     User getUserPageInfo(String user_id);
+
+    //判断用户是否已经注册
+    User isRegister(String user_id);
+
+    //注册
+    void register(User user);
 }

@@ -9,4 +9,8 @@ public interface CircleService {
 
     Circle getCircleInfo(String circle_id);
 
+    void applyCircle(Circle circle);
+
+    int getMaxCircleId();
+
 }

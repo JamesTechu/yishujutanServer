@@ -13,5 +13,11 @@ public interface CircleDao {
 
     //获取单个圈子详细信息的方法
     Circle getCircleInfo(String circle_id);
+
+    //用户申请创建新圈子
+    void applyCircle(Circle circle);
+
+    //获取最大圈子id
+    int getMaxCircleId();
 }
 

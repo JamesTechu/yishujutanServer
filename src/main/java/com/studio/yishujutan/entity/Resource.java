@@ -16,11 +16,12 @@ public class Resource {
     private String res_status;
     private String res_category;
     private String res_link;
+    private String res_icon;
 
     public Resource() {
     }
 
-    public Resource(String res_id, String res_title, String res_content, String res_description, String user_id, String issue_date, String res_status, String res_category, String res_link) {
+    public Resource(String res_id, String res_title, String res_content, String res_description, String user_id, String issue_date, String res_status, String res_category, String res_link, String res_icon) {
         this.res_id = res_id;
         this.res_title = res_title;
         this.res_content = res_content;
@@ -30,5 +31,6 @@ public class Resource {
         this.res_status = res_status;
         this.res_category = res_category;
         this.res_link = res_link;
+        this.res_icon = res_icon;
     }
 }

@@ -12,4 +12,12 @@
       where user_id = #{user_id}
     </select>
 
+    <select id="isRegister" parameterType="String" resultType="com.studio.yishujutan.entity.User">
+        select user_id from user where user_id = #{user_id}
+    </select>
+
+    <insert id="register" parameterType="com.studio.yishujutan.entity.User">
+        insert into user (user_id,nickname,icon) values (#{user_id},#{nickname},#{icon})
+    </insert>
+
 </mapper>

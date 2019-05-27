@@ -8,4 +8,8 @@ public interface UserService {
     User getUserIconAndNickNameById(String user_id);
 
     User getUserPageInfo(String user_id);
+
+    User isRegister(String user_id);
+
+    void register(User user);
 }

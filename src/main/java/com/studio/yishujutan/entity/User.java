@@ -45,4 +45,10 @@ public class User {
     public User() {
 
     }
+
+    public User(String user_id, String nickname, String icon) {
+        this.user_id = user_id;
+        this.nickname = nickname;
+        this.icon = icon;
+    }
 }

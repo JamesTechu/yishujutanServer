@@ -24,4 +24,14 @@ public class CircleServiceImp implements CircleService {
     public Circle getCircleInfo(String circle_id) {
         return circleDao.getCircleInfo(circle_id);
     }
+
+    @Override
+    public void applyCircle(Circle circle) {
+        circleDao.applyCircle(circle);
+    }
+
+    @Override
+    public int getMaxCircleId() {
+        return circleDao.getMaxCircleId();
+    }
 }
