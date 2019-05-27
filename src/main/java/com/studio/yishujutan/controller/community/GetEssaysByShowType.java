@@ -57,10 +57,13 @@ public class GetEssaysByShowType {
         jsonArray = new JSONArray();
         for (int i = 0; i < realNumber; i++){
             essay = essays.get(i);
+
             user = userService.getUserIconAndNickNameById(essay.getUser_id());
             jsonObject = jsonTool.makeEssayJson(essay, user, address);
             jsonArray.add(jsonObject);
+            System.out.println(jsonObject);
         }
+
         return jsonArray.toString();
     }
 

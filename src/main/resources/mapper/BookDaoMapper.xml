@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.studio.yishujutan.dao.BookDao">
+
+    <select id="getBookInformation" resultType="com.studio.yishujutan.entity.Book">
+     SELECT * FROM book ORDER BY RAND() LIMIT 2;
+    </select>
+
+</mapper>
