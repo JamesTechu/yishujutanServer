@@ -20,6 +20,7 @@ public class JsonTool {
 
         JSONObject jsonObject = new JSONObject();
 
+        jsonObject.put("essay_id", essay.getEssay_id());
         jsonObject.put("title", essay.getEssay_title());
         jsonObject.put("content", essay.getEssay_content());
         jsonObject.put("share_number", essay.getShare_number());

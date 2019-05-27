@@ -16,4 +16,12 @@
         from circle where circle_id = #{circle_id}
     </select>
 
+    <insert id="applyCircle" parameterType="com.studio.yishujutan.entity.Circle">
+        insert into circle (circle_id,circle_name,circle_category,circle_description,apply_date,circle_status,apply_reason)
+        values (#{circle_id},#{circle_name},#{circle_category},#{circle_description},#{apply_date},#{apply_reason},#{apply_reason})
+    </insert>
+
+    <select id="getMaxCircleId" resultType="int">
+        select max(circle_id) from circle;
+    </select>
 </mapper>

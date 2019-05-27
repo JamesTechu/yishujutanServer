@@ -21,4 +21,14 @@ public class UserServiceImp implements UserService {
     public User getUserPageInfo(String user_id) {
         return userDao.getUserPageInfo(user_id);
     }
+
+    @Override
+    public User isRegister(String user_id) {
+        return userDao.isRegister(user_id);
+    }
+
+    @Override
+    public void register(User user) {
+        userDao.register(user);
+    }
 }

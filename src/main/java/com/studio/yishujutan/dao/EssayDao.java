@@ -13,6 +13,12 @@ public interface EssayDao {
 
     List<Essay> selectEssaysByHotDegree(int number);
 
+    //点赞
+    void addPraiseNumber(String essay_id);
+
+    //取消点赞
+    void reducePraiseNumber(String essay_id);
+
     List<Essay> selectEssaysByFollows(@Param("number")int number, @Param("user_id")String user_id);
 
     Essay selectLastEssayById(String user_id);

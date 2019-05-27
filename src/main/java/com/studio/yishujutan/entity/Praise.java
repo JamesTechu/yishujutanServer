@@ -13,6 +13,11 @@ public class Praise {
     private String praise_status;
     private String praise_date;
 
+    public Praise(String user_id, String essay_id) {
+        this.user_id = user_id;
+        this.essay_id = essay_id;
+    }
+
     public Praise() {
     }
 
