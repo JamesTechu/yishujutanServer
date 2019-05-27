@@ -2,6 +2,7 @@ package com.studio.yishujutan.controller.community;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.studio.yishujutan.controller.tool.Address;
 import com.studio.yishujutan.entity.Circle;
 import com.studio.yishujutan.service.BrowseService;
 import com.studio.yishujutan.service.CircleService;
@@ -26,7 +27,7 @@ public class GetCircles {
     CircleService circleService;
 
     private int number = 10;
-    private String address = "http://yishujutan.free.idcfengye.com";
+    private String address = Address.LOCAL_ADDRESS;
     private JSONObject json;
     private JSONArray jsonItem;
 

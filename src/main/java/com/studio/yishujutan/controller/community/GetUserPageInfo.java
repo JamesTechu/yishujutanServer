@@ -2,6 +2,7 @@ package com.studio.yishujutan.controller.community;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.studio.yishujutan.controller.tool.Address;
 import com.studio.yishujutan.controller.tool.JsonTool;
 import com.studio.yishujutan.entity.Essay;
 import com.studio.yishujutan.entity.User;
@@ -23,7 +24,7 @@ public class GetUserPageInfo {
     @Autowired
     EssayService essayService;
 
-    private String address = "http://yishujutan.free.idcfengye.com";
+    private String address = Address.LOCAL_ADDRESS;
     private JsonTool jsonTool;
 
     @GetMapping("/getUserPageInfo")

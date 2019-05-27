@@ -2,6 +2,7 @@ package com.studio.yishujutan.controller.community;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.studio.yishujutan.controller.tool.Address;
 import com.studio.yishujutan.controller.tool.JsonTool;
 import com.studio.yishujutan.entity.Circle;
 import com.studio.yishujutan.entity.Essay;
@@ -31,7 +32,7 @@ public class GetCircleInfo {
     private JSONObject json;        //向小程序端返回的数据
     private JSONArray jsonArray;    //用JSONArray储存Essay数据
     private int number = 0;         //返回的Essay数量，数据库中会进行乘5计算
-    private String address = "http://127.0.0.1:8080";  //本地IP地址，速度快
+    private String address = Address.LOCAL_ADDRESS;  //本地IP地址，速度快
     //private String address = "http://yishujutan.free.idcfengye.com";  //内网穿透，速度慢
 
     @GetMapping("/getCircleInfo")
@@ -69,7 +70,7 @@ public class GetCircleInfo {
             realNumber--;
             json.put("flag", "yes");
         }
-        //创建工具累jsonTool，用于将一个essay对象的信息保存在JSONObject对象中
+        //创建工具类jsonTool，用于将一个essay对象的信息保存在JSONObject对象中
         JsonTool jsonTool = new JsonTool();
         Essay essay;
         User user;

@@ -2,6 +2,7 @@ package com.studio.yishujutan.controller.community;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.studio.yishujutan.controller.tool.Address;
 import com.studio.yishujutan.entity.Essay;
 import com.studio.yishujutan.entity.User;
 import com.studio.yishujutan.service.EssayService;
@@ -30,6 +31,8 @@ public class GetFollows {
     @Autowired
     EssayService essayService;
 
+    private String address = Address.LOCAL_ADDRESS;
+
     @GetMapping("/getFollows")
     public String getFollows(HttpServletRequest request, HttpServletResponse response) throws ParseException {
 
@@ -40,7 +43,6 @@ public class GetFollows {
         JSONObject jsonObject;
         User user;
         Essay essay;
-        String address = "http://yishujutan.free.idcfengye.com";
 
         for (int i = 0; i < follows_id.length; i++){
             user = userService.getUserIconAndNickNameById(follows_id[i]);
