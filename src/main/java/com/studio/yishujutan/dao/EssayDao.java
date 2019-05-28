@@ -9,8 +9,10 @@ import java.util.List;
 @Mapper
 public interface EssayDao {
 
+    //插入一条帖子
     void insertIntoEssay(Essay essay);
 
+    //根据热度获取帖子
     List<Essay> selectEssaysByHotDegree(int number);
 
     //点赞
@@ -19,10 +21,16 @@ public interface EssayDao {
     //取消点赞
     void reducePraiseNumber(String essay_id);
 
+    //根据Essay_id获取帖子
+    Essay selectEssayByEssayId(String essay_id);
+
+    //获取关注好友发布的帖子
     List<Essay> selectEssaysByFollows(@Param("number")int number, @Param("user_id")String user_id);
 
+    //根据用户ID获取最近发布的一条帖子
     Essay selectLastEssayById(String user_id);
 
+    //根据用户ID获取指定数量的帖子
     List<Essay> selectEssaysById(@Param("number")int number, @Param("user_id")String user_id);
 
     //根据circle_id获取贴子

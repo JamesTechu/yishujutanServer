@@ -1,6 +1,5 @@
 package com.studio.yishujutan.controller.community;
 
-import com.studio.yishujutan.dao.CircleDao;
 import com.studio.yishujutan.entity.Circle;
 import com.studio.yishujutan.service.CircleService;
 import org.springframework.beans.factory.annotation.Autowired;

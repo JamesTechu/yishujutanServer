@@ -47,6 +47,10 @@
         update essay set praise_number = praise_number-1 where essay_id = #{essay_id}
     </select>
 
+    <select id="selectEssayByEssayId" parameterType="String" resultType="com.studio.yishujutan.entity.Essay">
+        select * from essay where essay_id = #{essay_id}
+    </select>
+
 
 
 </mapper>
