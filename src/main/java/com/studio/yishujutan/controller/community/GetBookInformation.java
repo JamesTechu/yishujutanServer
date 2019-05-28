@@ -1,6 +1,7 @@
 package com.studio.yishujutan.controller.community;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.studio.yishujutan.controller.tool.Address;
 import com.studio.yishujutan.entity.Book;
 import com.studio.yishujutan.service.BookService;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
@@ -22,7 +23,8 @@ public class GetBookInformation {
     BookService bookService;
 
     private JSONArray jsonArray;
-
+    private String address = Address.LOCAL_ADDRESS;  //本地IP地址，速度快
+    //private String address = "http://yishujutan.free.idcfengye.com";  //内网穿透，速度慢
 
     @GetMapping("/bookinformation")
 
