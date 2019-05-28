@@ -54,5 +54,10 @@ public class EssayServiceImp implements EssayService {
         essayDao.reducePraiseNumber(essay_id);
     }
 
+    @Override
+    public Essay selectEssayByEssayId(String essay_id) {
+        return essayDao.selectEssayByEssayId(essay_id);
+    }
+
 
 }

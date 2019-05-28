@@ -21,12 +21,13 @@ public class Post {
     EssayService essayService;
 
     @GetMapping("/doPraise")
-    public void doPraise(HttpServletRequest request){
+    public String doPraise(HttpServletRequest request){
 
         String essay_id = request.getParameter("essay_id");
         String user_id = request.getParameter("user_id");
 
         Praise praise = praiseService.isPraised(user_id,essay_id);
+        String praise_number;
         if (praise != null){
             praise = new Praise(user_id, essay_id);
             praiseService.cancelPraise(praise);
@@ -40,7 +41,8 @@ public class Post {
             praiseService.doPraise(praise);
             essayService.addPraiseNumber(essay_id);
         }
-
+        praise_number = String.valueOf(essayService.selectEssayByEssayId(essay_id).getPraise_number());
+        return praise_number;
     }
 
     @GetMapping("/doDislike")

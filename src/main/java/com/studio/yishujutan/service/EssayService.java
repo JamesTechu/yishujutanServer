@@ -21,4 +21,6 @@ public interface EssayService {
     void addPraiseNumber(String essay_id);
 
     void reducePraiseNumber(String essay_id);
+
+    Essay selectEssayByEssayId(String essay_id);
 }
