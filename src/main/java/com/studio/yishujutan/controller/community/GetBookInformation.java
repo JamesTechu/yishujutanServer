@@ -38,6 +38,8 @@ public class GetBookInformation {
            book= books.get(i);
            result=new JSONObject();
            result.put("book_name",book.getBook_name());
+           result.put("book_id",book.getBook_id());
+           result.put("book_picture",book.getBook_picture());
            jsonArray.add(result);
         }
         System.out.println(books);
