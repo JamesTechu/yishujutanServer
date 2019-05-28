@@ -3,7 +3,7 @@
 <mapper namespace="com.studio.yishujutan.dao.BookDao">
 
     <select id="getBookInformation" resultType="com.studio.yishujutan.entity.Book">
-     SELECT * FROM book ORDER BY RAND() LIMIT 2;
+     SELECT * FROM book ORDER BY RAND() LIMIT 9;
     </select>
     <select id="getSearchBook" parameterType="String" resultType="com.studio.yishujutan.entity.Book">
         select * from book where concat('book_name','use_id','book_category') like '%#{news}%'

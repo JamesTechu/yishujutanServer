@@ -41,7 +41,9 @@ public class GetBookInformation {
            result=new JSONObject();
            result.put("book_name",book.getBook_name());
            result.put("book_id",book.getBook_id());
-           result.put("book_picture",book.getBook_picture());
+           result.put("book_picture",Address.LOCAL_ADDRESS+book.getBook_picture());
+           result.put("book_price",book.getBook_price());
+           result.put("book_category",book.getBook_category());
            jsonArray.add(result);
         }
         System.out.println(books);
