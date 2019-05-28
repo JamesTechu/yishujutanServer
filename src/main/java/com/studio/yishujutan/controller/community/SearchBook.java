@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 public class SearchBook {
     @Autowired
@@ -19,6 +20,8 @@ public class SearchBook {
     @GetMapping("/searchbook")
     private String Searchbook(HttpServletRequest request){
         String showType = request.getParameter("showType");
+        jsonArray =new JSONArray();
+        List<Book> books=null;
 
 
         return jsonArray.toString();

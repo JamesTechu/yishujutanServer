@@ -44,6 +44,8 @@ public class GetBookInformation {
            result.put("book_picture",Address.LOCAL_ADDRESS+book.getBook_picture());
            result.put("book_price",book.getBook_price());
            result.put("book_category",book.getBook_category());
+           result.put("book_press",book.getBook_press());
+           result.put("issue_date",book.getIssue_date());
            jsonArray.add(result);
         }
         System.out.println(books);
