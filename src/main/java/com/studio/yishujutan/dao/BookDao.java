@@ -7,5 +7,8 @@ import java.util.List;
 
 @Mapper
 public interface BookDao {
-    List<Book> getBookInformation();
+    List<Book> getBookInformation();   //首页随机获取书的信息
+
+    List<Book> getSearchBook(String news);   //查找书籍
+
 }
