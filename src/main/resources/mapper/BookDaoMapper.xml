@@ -2,10 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.studio.yishujutan.dao.BookDao">
 
-    <select id="getBookInformation" resultType="com.studio.yishujutan.entity.Book">
-     SELECT * FROM book ORDER BY RAND() LIMIT 9;
-    </select>
-    <select id="getSearchBook" parameterType="String" resultType="com.studio.yishujutan.entity.Book">
-        select * from book where concat('book_name','use_id','book_category') like '%#{news}%'
-    </select>
+<select id="getAllBookInformation" resultType="com.studio.yishujutan.entity.Book">
+    SELECT * FROM book ORDER BY issue_date LIMIT 9;
+</select>
+<select id="getSearchBook" resultType="com.studio.yishujutan.entity.Book">
+    select * from book where concat(book_name,user_id,book_category) like '%${news}%';
+</select>
+<select id="getBookContent" parameterType="String" resultType="com.studio.yishujutan.entity.Book">
+    select * from  book where book_id=#{book_id};
+</select>
+<select id="getBookInformation" resultType="com.studio.yishujutan.entity.Book">
+    SELECT * FROM book where book_status = 0 ORDER BY issue_date LIMIT 9;
+</select>
+<select id="getNoteInformation"  resultType="com.studio.yishujutan.entity.Book">
+    SELECT * FROM book where book_status = 1 ORDER BY issue_date LIMIT 9;
+</select>
 </mapper>

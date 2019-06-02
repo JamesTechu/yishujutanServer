@@ -1,6 +1,7 @@
-package com.studio.yishujutan.controller.community;
+package com.studio.yishujutan.controller.home;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.studio.yishujutan.controller.home.JsonTool.Bookjson;
 import com.studio.yishujutan.controller.tool.Address;
 import com.studio.yishujutan.entity.Book;
 import com.studio.yishujutan.service.BookService;
@@ -21,57 +22,47 @@ public class GetBookInformation {
 
     @Autowired
     BookService bookService;
-
+    private  Bookjson bookjson;
     private JSONArray jsonArray;
     private String address = Address.LOCAL_ADDRESS;  //本地IP地址，速度快
     //private String address = "http://yishujutan.free.idcfengye.com";  //内网穿透，速度慢
 
-    @GetMapping("/bookinformation")
+    @GetMapping("/bookinformation")    //首页获取图书信息
 
-    public String GetBookInformation(HttpServletRequest request) {
+    public String GetBookInformation() {
         JSONObject result;
         jsonArray =new JSONArray();
         List<Book> books=null;
         books=bookService.getBookInformation();
         int realNumber = books.size();
         Book book;
-
+        bookjson=new Bookjson();
         for (int i = 0; i < realNumber; i++) {
            book= books.get(i);
-           result=new JSONObject();
-           result.put("book_name",book.getBook_name());
-           result.put("book_id",book.getBook_id());
-           result.put("book_picture",Address.LOCAL_ADDRESS+book.getBook_picture());
-           result.put("book_price",book.getBook_price());
-           result.put("book_category",book.getBook_category());
-           result.put("book_press",book.getBook_press());
-           result.put("issue_date",book.getIssue_date());
+
+           result=bookjson.bookjson(book);
+
            jsonArray.add(result);
         }
         System.out.println(books);
         return jsonArray.toString();
     }
+    @GetMapping("/bookcontent")//点进书籍内容进一步显示详细信息
+    public String GetBookcontent(String book_id){
+        JSONObject result2;
+
+        jsonArray =new JSONArray();
+        List<Book> books=null;
+        books=bookService.getBookContent(book_id);
+        Book book=books.get(0);
+        bookjson=new Bookjson();
+        result2=bookjson.bookjson(book);
+        jsonArray.add(result2);
+        return jsonArray.toString();
+    }
+
 
 
 }
 
-//    public String GetBookInformation(HttpServletRequest request){
-//        //String book_name=request.getParameter("book_name");
-//        String book_name="shuai";
-//        return "hello SpringBoot";
-//    }
 
-
-
-//public String  {
-//    @GetMapping(value="/bookinformation")
-//    public String hello() {
-//        List<Book> book = new ArrayList<>();
-//        int news = book.size();
-//        for (int i = 0; i < news; i++) {
-//            book.add( );
-//
-//
-//        }
-//    }
-//    }
