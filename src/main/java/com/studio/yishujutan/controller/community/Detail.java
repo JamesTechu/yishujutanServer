@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.studio.yishujutan.controller.tool.Address;
 import com.studio.yishujutan.controller.tool.JsonTool;
-import com.studio.yishujutan.entity.Circle;
 import com.studio.yishujutan.entity.Essay;
 import com.studio.yishujutan.entity.User;
 import com.studio.yishujutan.service.CircleService;
@@ -18,23 +17,23 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
-public class GetCircleInfo {
+public class Detail {
 
-    @Autowired
-    EssayService essayService;
+    private JSONObject json;        //向小程序端返回的数据
+    private JSONArray jsonArray;    //用JSONArray储存Essay数据
+    private int number = 0;         //返回的Essay数量，数据库中会进行乘5计算
+    private String address = Address.ADDRESS;  //IP地址
 
     @Autowired
     CircleService circleService;
 
     @Autowired
+    EssayService essayService;
+
+    @Autowired
     UserService userService;
 
-    private JSONObject json;        //向小程序端返回的数据
-    private JSONArray jsonArray;    //用JSONArray储存Essay数据
-    private int number = 0;         //返回的Essay数量，数据库中会进行乘5计算
-    private String address = Address.LOCAL_ADDRESS;  //本地IP地址，速度快
-    //private String address = "http://yishujutan.free.idcfengye.com";  //内网穿透，速度慢
-
+    //获取圈子信息
     @GetMapping("/getCircleInfo")
     public String getCircleInfo(HttpServletRequest request){
 
@@ -46,7 +45,7 @@ public class GetCircleInfo {
         jsonArray = new JSONArray();
 
         //根据circle_id获取相应的circle信息
-        Circle circle = circleService.getCircleInfo(circle_id);
+        com.studio.yishujutan.entity.Circle circle = circleService.getCircleInfo(circle_id);
         //将信息储存在JSON对象中
         JSONObject circleJson = new JSONObject();
         circleJson.put("circle_id", circle.getCircle_id());
@@ -59,7 +58,7 @@ public class GetCircleInfo {
         json.put("circleinfo", circleJson);
 
         //创建用于储存essay对象的List，并调用essayService的方法实例化
-        List<Essay> essays = essayService.selectEssaysByCircleId(circle_id, number, number + 6);
+        List<com.studio.yishujutan.entity.Essay> essays = essayService.selectEssaysByCircleId(circle_id, number, number + 6);
         //获取实际查询到的essay数目
         int realNumber = essays.size();
         if (number == 0 && realNumber == 0){

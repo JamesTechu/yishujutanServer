@@ -1,54 +1,68 @@
 package com.studio.yishujutan.controller.community;
 
-import com.studio.yishujutan.controller.tool.DateFormat;
-import com.studio.yishujutan.entity.Praise;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.studio.yishujutan.controller.tool.Address;
+import com.studio.yishujutan.controller.tool.JsonTool;
+import com.studio.yishujutan.entity.Essay;
+import com.studio.yishujutan.entity.User;
 import com.studio.yishujutan.service.EssayService;
-import com.studio.yishujutan.service.PraiseService;
+import com.studio.yishujutan.service.UserService;
+import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.Date;
+import java.util.List;
 
 @RestController
 public class Post {
 
-    @Autowired
-    PraiseService praiseService;
+    private String address = Address.ADDRESS;
+    private JSONArray jsonArray;
+    private JsonTool jsonTool;
 
     @Autowired
     EssayService essayService;
 
-    @GetMapping("/doPraise")
-    public String doPraise(HttpServletRequest request){
+    @Autowired
+    UserService userService;
 
-        String essay_id = request.getParameter("essay_id");
+    //根据要显示的类型获取帖子
+    @GetMapping("/getEssaysByShowType")
+    public String getEssaysByShowType(HttpServletRequest request){
+
+        int number = Integer.parseInt(request.getParameter("number"));
+        String showType = request.getParameter("showType");
         String user_id = request.getParameter("user_id");
+        jsonTool = new JsonTool();
 
-        Praise praise = praiseService.isPraised(user_id,essay_id);
-        String praise_number;
-        if (praise != null){
-            praise = new Praise(user_id, essay_id);
-            praiseService.cancelPraise(praise);
-            essayService.reducePraiseNumber(essay_id);
-        }else {
-            Date date = new Date();
-            String praise_date = DateFormat.ONLY_NUMBER.format(date);
-            String praise_id = user_id + praise_date;
-
-            praise = new Praise(praise_id,user_id,essay_id,"on",praise_date);
-            praiseService.doPraise(praise);
-            essayService.addPraiseNumber(essay_id);
+        List<Essay> essays = null;
+        switch (showType){
+            case "f":
+                essays = essayService.selectEssaysByFollows(number, user_id);
+                break;
+            case "r":
+                break;
+            case "h":
+                essays = essayService.selectEssaysByHotDegree(number);
+                break;
         }
-        praise_number = String.valueOf(essayService.selectEssayByEssayId(essay_id).getPraise_number());
-        return praise_number;
+        if (essays == null) {
+            return "no essay";
+        }
+        int realNumber = essays.size();
+        JSONObject jsonObject;
+        Essay essay;
+        User user;
+        jsonArray = new JSONArray();
+        for (int i = 0; i < realNumber; i++){
+            essay = essays.get(i);
+            user = userService.getUserIconAndNickNameById(essay.getUser_id());
+            jsonObject = jsonTool.makeEssayJson(essay, user, address);
+            jsonArray.add(jsonObject);
+        }
+        return jsonArray.toString();
     }
-
-    @GetMapping("/doDislike")
-    public void doDislike(HttpServletRequest request){
-
-    }
-
 
 }

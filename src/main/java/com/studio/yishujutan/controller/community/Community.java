@@ -10,6 +10,7 @@ import com.studio.yishujutan.service.FollowService;
 import com.studio.yishujutan.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +21,9 @@ import java.util.Calendar;
 import java.util.Date;
 
 @RestController
-public class GetFollows {
+public class Community {
+
+    private String address = Address.ADDRESS;
 
     @Autowired
     UserService userService;
@@ -31,8 +34,8 @@ public class GetFollows {
     @Autowired
     EssayService essayService;
 
-    private String address = Address.LOCAL_ADDRESS;
 
+    //获取community界面的好友信息
     @GetMapping("/getFollows")
     public String getFollows(HttpServletRequest request, HttpServletResponse response) throws ParseException {
 

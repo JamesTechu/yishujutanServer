@@ -16,16 +16,16 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
-public class GetUserPageInfo {
+public class FriendsInfo {
+
+    private String address = Address.ADDRESS;
+    private JsonTool jsonTool;
 
     @Autowired
     UserService userService;
 
     @Autowired
     EssayService essayService;
-
-    private String address = Address.LOCAL_ADDRESS;
-    private JsonTool jsonTool;
 
     @GetMapping("/getUserPageInfo")
     public String doGet(HttpServletRequest request){
