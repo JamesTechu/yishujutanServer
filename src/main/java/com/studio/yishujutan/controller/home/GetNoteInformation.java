@@ -25,7 +25,7 @@ public class GetNoteInformation {
     private String address = Address.LOCAL_ADDRESS;  //本地IP地址，速度快
     //private String address = "http://yishujutan.free.idcfengye.com";  //内网穿透，速度慢
 
-    @GetMapping("/noteinformation")    //首页获取图书信息
+    @GetMapping("/noteinformation")    //首页获取笔记信息
 
     public String GetNoteInformation() {
         JSONObject result;

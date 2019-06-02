@@ -20,7 +20,7 @@ public class GetSearchBook {
     private JSONArray jsonArray;
     private  Bookjson bookjson;
 
-    @GetMapping("/getsearchbook")
+    @GetMapping("/getsearchbook")   //查找书籍
     public String GetSearchbook(String news){
         JSONObject result;
         jsonArray =new JSONArray();
