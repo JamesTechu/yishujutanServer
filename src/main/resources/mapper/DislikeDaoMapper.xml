@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.studio.yishujutan.dao.DislikeDao">
+
+    <select id="isDisliked" resultType="com.studio.yishujutan.entity.Dislike">
+        select dislike_id from dislike where user_id = #{user_id} and essay_id = #{essay_id}
+    </select>
+
+    <insert id="doDislike" parameterType="com.studio.yishujutan.entity.Dislike">
+        insert into dislike
+        values (#{dislike_id},#{user_id},#{essay_id},#{dislike_status},#{dislike_date});
+    </insert>
+
+    <delete id="cancelDislike" parameterType="com.studio.yishujutan.entity.Dislike">
+        delete from dislike where user_id = #{user_id} and essay_id = #{essay_id}
+    </delete>
+</mapper>

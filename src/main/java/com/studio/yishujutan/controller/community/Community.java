@@ -10,7 +10,6 @@ import com.studio.yishujutan.service.FollowService;
 import com.studio.yishujutan.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -76,6 +75,7 @@ public class Community {
         return jsonArray.toString();
     }
 
+    //获取指定日期与当前日期的时间差
     public String getTimeDiffer(String issueTime) throws ParseException {
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yy-MM-dd HH:mm");

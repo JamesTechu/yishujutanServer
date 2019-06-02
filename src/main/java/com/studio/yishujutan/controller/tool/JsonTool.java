@@ -1,32 +1,31 @@
 package com.studio.yishujutan.controller.tool;
 
 import com.alibaba.fastjson.JSONObject;
+import com.studio.yishujutan.entity.Dislike;
 import com.studio.yishujutan.entity.Essay;
 import com.studio.yishujutan.entity.Praise;
 import com.studio.yishujutan.entity.User;
-import com.studio.yishujutan.service.PraiseService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 public class JsonTool {
 
-    @Autowired
-    PraiseService praiseService;
-
-    public JSONObject makeEssayJson(Essay essay, User user, String address){
+    public JSONObject makeEssayJson(Essay essay, User user, String address, Praise praise, Dislike dislike){
 
         JSONObject jsonObject = makeEssayJson(essay);
-        String isPraised = "";
-//        Praise praise = praiseService.isPraised(user.getUser_id(), essay.getEssay_id());
-//        if (praise == null){
-//            isPraised = "no";
-//        }else {
-//            isPraised = "yes";
-//        }
 
         jsonObject.put("userIcon", address + user.getIcon());
         jsonObject.put("nickname", user.getNickname());
 
-        jsonObject.put("isPraised", isPraised);
+        if (praise == null){
+            jsonObject.put("isPraised", "0");
+        }else {
+            jsonObject.put("isPraised", "1");
+        }
+
+        if (dislike == null){
+            jsonObject.put("isDisliked", "0");
+        }else {
+            jsonObject.put("isDisliked", "1");
+        }
 
         return jsonObject;
     }

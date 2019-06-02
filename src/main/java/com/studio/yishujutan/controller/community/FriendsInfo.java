@@ -4,9 +4,13 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.studio.yishujutan.controller.tool.Address;
 import com.studio.yishujutan.controller.tool.JsonTool;
+import com.studio.yishujutan.entity.Dislike;
 import com.studio.yishujutan.entity.Essay;
+import com.studio.yishujutan.entity.Praise;
 import com.studio.yishujutan.entity.User;
+import com.studio.yishujutan.service.DislikeService;
 import com.studio.yishujutan.service.EssayService;
+import com.studio.yishujutan.service.PraiseService;
 import com.studio.yishujutan.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,12 +31,17 @@ public class FriendsInfo {
     @Autowired
     EssayService essayService;
 
+    @Autowired
+    PraiseService praiseService;
+
+    @Autowired
+    DislikeService dislikeService;
+
     @GetMapping("/getUserPageInfo")
-    public String doGet(HttpServletRequest request){
+    public String doGet(String user_id, String friends_id){
 
         jsonTool = new JsonTool();
-        String user_id = request.getParameter("user_id");
-        User user = userService.getUserPageInfo(user_id);
+        User user = userService.getUserPageInfo(friends_id);
         JSONObject userinfoJson = new JSONObject();
         userinfoJson.put("page_bg", user.getPage_bg());
         userinfoJson.put("icon", address + user.getIcon());
@@ -47,12 +56,18 @@ public class FriendsInfo {
 
         JSONArray jsonArray = new JSONArray();
         JSONObject essaysJson;
-        List<Essay> essays = essayService.selectEssaysById(5, user_id);
+        List<Essay> essays = essayService.selectEssaysById(5, friends_id);
         int realNumber = essays.size();
         Essay essay;
+        Praise praise;
+        Dislike dislike;
+
         for (int i = 0; i < realNumber; i++){
             essay = essays.get(i);
-            essaysJson = jsonTool.makeEssayJson(essay, user, address);
+            praise = praiseService.isPraised(user_id, essay.getEssay_id());
+            dislike = dislikeService.isDisliked(user.getUser_id(), essay.getEssay_id());
+
+            essaysJson = jsonTool.makeEssayJson(essay, user, address, praise, dislike);
             jsonArray.add(essaysJson);
         }
 
