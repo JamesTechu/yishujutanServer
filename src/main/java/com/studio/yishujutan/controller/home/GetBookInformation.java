@@ -29,22 +29,45 @@ public class GetBookInformation {
 
     @GetMapping("/bookinformation")    //首页获取图书信息
 
-    public String GetBookInformation() {
+    public String GetBookInformation(String booktype) {
         JSONObject result;
         jsonArray =new JSONArray();
         List<Book> books=null;
-        books=bookService.getBookInformation();
-        int realNumber = books.size();
-        Book book;
-        bookjson=new Bookjson();
-        for (int i = 0; i < realNumber; i++) {
-           book= books.get(i);
+        try {
+            switch (booktype) {
+                case "a":
+                    books = bookService.getAllBookInformation();
+                    break;
+                case "b":
+                    books = bookService.getBookInformation();
+                    break;
+                case "c":
+                    books = bookService.getNoteInformation();
+                    break;
+                default:
+                    System.out.println("没有此类书");
 
-           result=bookjson.bookjson(book);
+                    break;
 
-           jsonArray.add(result);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
-        System.out.println(books);
+        if(books!=null) {
+            int realNumber = books.size();
+            Book book;
+            bookjson = new Bookjson();
+            for (int i = 0; i < realNumber; i++) {
+                book = books.get(i);
+
+                result = bookjson.bookjson(book);
+
+                jsonArray.add(result);
+            }
+            System.out.println(books);
+        }else{
+            System.out.println("没有此类书");
+        }
         return jsonArray.toString();
     }
     @GetMapping("/bookcontent")//点进书籍内容进一步显示详细信息
