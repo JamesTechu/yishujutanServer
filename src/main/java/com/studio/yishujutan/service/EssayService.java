@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface EssayService {
 
+    List<Essay> selectEssaysFuzzily(String key);
+
     void insertIntoEssay(Essay essay);
 
     List<Essay> selectEssaysByHotDegree(int number);

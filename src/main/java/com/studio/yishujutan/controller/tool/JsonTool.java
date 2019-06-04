@@ -43,6 +43,7 @@ public class JsonTool {
         jsonObject.put("dislike_number", essay.getDislike_number());
         jsonObject.put("have_picture", essay.getHave_picture());
         jsonObject.put("essay_picture", essay.getEssay_picture());
+        jsonObject.put("user_id", essay.getUser_id());
 
         return jsonObject;
     }

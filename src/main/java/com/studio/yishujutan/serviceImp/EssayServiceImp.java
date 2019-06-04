@@ -15,6 +15,11 @@ public class EssayServiceImp implements EssayService {
     EssayDao essayDao;
 
     @Override
+    public List<Essay> selectEssaysFuzzily(String key) {
+        return essayDao.selectEssaysFuzzily(key);
+    }
+
+    @Override
     public void insertIntoEssay(Essay essay) {
         essayDao.insertIntoEssay(essay);
     }

@@ -24,6 +24,12 @@ public class Post {
     private String address = Address.ADDRESS;
     private JSONArray jsonArray;
     private JsonTool jsonTool;
+    private int realNumber;
+    private JSONObject jsonObject;
+    private Essay essay;
+    private User user;
+    private Praise praise;
+    private Dislike dislike;
 
     @Autowired
     EssayService essayService;
@@ -58,22 +64,33 @@ public class Post {
             return "no essay";
         }
 
-        int realNumber = essays.size();
-        JSONObject jsonObject;
-        Essay essay;
-        User user;
-        Praise praise;
-        Dislike dislike;
+        realNumber = essays.size();
         jsonArray = new JSONArray();
 
         for (int i = 0; i < realNumber; i++){
             essay = essays.get(i);
             user = userService.getUserIconAndNickNameById(essay.getUser_id());
-
             praise = praiseService.isPraised(user_id, essay.getEssay_id());
-            if (i == 0){
-                System.out.println("测试数据：" + praise.getPraise_id() + user.getUser_id() + essay.getEssay_id());
-            }
+            dislike = dislikeService.isDisliked(user_id, essay.getEssay_id());
+
+            jsonObject = jsonTool.makeEssayJson(essay, user, address, praise, dislike);
+            jsonArray.add(jsonObject);
+        }
+        return jsonArray.toString();
+    }
+
+    @GetMapping("searchEssay")
+    public String searchEssay(String key, String user_id){
+
+        jsonTool = new JsonTool();
+        List<Essay> essays = essayService.selectEssaysFuzzily(key);
+        realNumber = essays.size();
+        jsonArray = new JSONArray();
+
+        for (int i = 0; i < realNumber; i++){
+            essay = essays.get(i);
+            user = userService.getUserIconAndNickNameById(essay.getUser_id());
+            praise = praiseService.isPraised(user_id, essay.getEssay_id());
             dislike = dislikeService.isDisliked(user_id, essay.getEssay_id());
 
             jsonObject = jsonTool.makeEssayJson(essay, user, address, praise, dislike);

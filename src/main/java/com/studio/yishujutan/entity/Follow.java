@@ -24,4 +24,9 @@ public class Follow {
     public Follow() {
 
     }
+
+    public Follow(String user_id, String object_id) {
+        this.user_id = user_id;
+        this.object_id = object_id;
+    }
 }

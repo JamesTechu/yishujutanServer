@@ -3,9 +3,16 @@
 
 <mapper namespace="com.studio.yishujutan.dao.EssayDao">
 
+    <select id="selectEssaysFuzzily" resultType="com.studio.yishujutan.entity.Essay">
+        select * from essay
+        where concat(essay_title,essay_content,essay_description,essay_category)
+        like '%${key}%'
+
+    </select>
+
     <insert id="insertIntoEssay" parameterType="com.studio.yishujutan.entity.Essay">
-      insert into essay (essay_id,essay_tittle,essay_content,user_id)
-      values (#{essay_id},#{essay_title},#{essay_content},#{user_id})
+      insert into essay (essay_id,essay_title,essay_content,user_id,essay_status,circle_id,issue_date)
+      values (#{essay_id},#{essay_title},#{essay_content},#{user_id},#{essay_status},#{circle_id},#{issue_date})
     </insert>
 
     <select id="selectEssaysByHotDegree" parameterType="int" resultType="com.studio.yishujutan.entity.Essay">

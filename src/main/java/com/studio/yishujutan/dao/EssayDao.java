@@ -9,6 +9,9 @@ import java.util.List;
 @Mapper
 public interface EssayDao {
 
+    //模糊查询帖子
+    List<Essay> selectEssaysFuzzily(@Param("key") String key);
+
     //插入一条帖子
     void insertIntoEssay(Essay essay);
 

@@ -8,7 +8,7 @@
     </select>
 
     <select id="getUserPageInfo" parameterType="String" resultType="com.studio.yishujutan.entity.User">
-      select icon,nickname,signature,follow_number,follower_number,page_bg from user
+      select icon,nickname,signature,follow_number,follower_number,page_bg,wechat from user
       where user_id = #{user_id}
     </select>
 

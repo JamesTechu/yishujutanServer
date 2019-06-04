@@ -43,11 +43,13 @@ public class Essay {
         this.dislike_number = dislike_number;
     }
 
-    public Essay(String essay_id, String title, String content, String user_id) {
+    public Essay(String essay_id, String title, String content, String user_id, String essay_status, String circle_id) {
         this.essay_id = essay_id;
         this.essay_title = title;
         this.essay_content = content;
         this.user_id = user_id;
+        this.essay_status = essay_status;
+        this.circle_id = circle_id;
     }
 
     public Essay() {
