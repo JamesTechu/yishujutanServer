@@ -1,6 +1,7 @@
 package com.studio.yishujutan.dao;
 
 import com.studio.yishujutan.entity.Circle;
+import com.studio.yishujutan.entity.Essay;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -19,5 +20,8 @@ public interface CircleDao {
 
     //获取最大圈子id
     int getMaxCircleId();
+
+    //模糊查询帖子
+    List<Circle> getCirclesFuzzily(@Param("key") String key);
 }
 

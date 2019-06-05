@@ -84,4 +84,12 @@ public class Circle {
         return jsonArray;
     }
 
+    @GetMapping("/searchCircle")
+    public String searchCircle(String key){
+        List<com.studio.yishujutan.entity.Circle> circles = circleService.getCirclesFuzzily(key);
+        int realNumber = circles.size();
+        jsonItem = makeJsonItem(realNumber, circles);
+        return jsonItem.toString();
+    }
+
 }

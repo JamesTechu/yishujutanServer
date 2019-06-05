@@ -1,6 +1,7 @@
 package com.studio.yishujutan.service;
 
 import com.studio.yishujutan.entity.Circle;
+
 import java.util.List;
 
 public interface CircleService {
@@ -12,5 +13,9 @@ public interface CircleService {
     void applyCircle(Circle circle);
 
     int getMaxCircleId();
+
+
+    //模糊查询帖子
+    List<Circle> getCirclesFuzzily(String key);
 
 }

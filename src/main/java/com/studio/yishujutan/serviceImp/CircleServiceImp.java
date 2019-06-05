@@ -34,4 +34,9 @@ public class CircleServiceImp implements CircleService {
     public int getMaxCircleId() {
         return circleDao.getMaxCircleId();
     }
+
+    @Override
+    public List<Circle> getCirclesFuzzily(String key) {
+        return circleDao.getCirclesFuzzily(key);
+    }
 }
