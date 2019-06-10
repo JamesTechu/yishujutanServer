@@ -17,4 +17,7 @@
 <select id="getNoteInformation"  resultType="com.studio.yishujutan.entity.Book">
     SELECT * FROM book where book_status = 1 ORDER BY issue_date LIMIT 9;
 </select>
+    <select id="getAllbook" resultType="com.studio.yishujutan.entity.Book">
+      select * from book where book_status = 0  ORDER BY issue_date
+    </select>
 </mapper>

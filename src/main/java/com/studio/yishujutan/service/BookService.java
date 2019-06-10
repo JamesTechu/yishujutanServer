@@ -1,5 +1,7 @@
 package com.studio.yishujutan.service;
 
+
+import com.github.pagehelper.PageInfo;
 import com.studio.yishujutan.entity.Book;
 
 import java.util.List;
@@ -10,4 +12,7 @@ public interface BookService {
     List<Book> getSearchBook(String news);  //查询书籍
     List<Book> getBookContent(String book_id);  //通过书名查询书籍
     List<Book> getNoteInformation(); //获取笔记
+    List<Book> findAll();
+
+
 }
