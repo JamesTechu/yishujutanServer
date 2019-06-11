@@ -21,7 +21,7 @@ public class BooklistController {
     private BookService bookService;
     @GetMapping("/booklist")
     public ModelAndView booklist(@RequestParam(value = "currentPage",defaultValue = "1") Integer currentPage,
-                                 @RequestParam(value = "pageSize",defaultValue = "5") Integer pageSize,
+                                 @RequestParam(value = "pageSize",defaultValue = "10") Integer pageSize,
                                  Map<String,Object> map){
         PageHelper.startPage(currentPage,pageSize);
         List<Book> bookList=bookService.findAll();
