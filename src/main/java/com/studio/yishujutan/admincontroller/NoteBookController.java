@@ -14,27 +14,18 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-public class BooklistController {
+public class NoteBookController {
     @Autowired
     private BookService bookService;
-    @GetMapping("/booklist")
-    public ModelAndView booklist(@RequestParam(value = "currentPage",defaultValue = "1") Integer currentPage,
+    @GetMapping("/notebooklist")
+    public ModelAndView noteBooklist(@RequestParam(value = "currentPage",defaultValue = "1") Integer currentPage,
                                  @RequestParam(value = "pageSize",defaultValue = "10") Integer pageSize,
                                  Map<String,Object> map){
         PageHelper.startPage(currentPage,pageSize);
-        List<Book> bookList=bookService.findAll();
+        List<Book> bookList=bookService.getAllnotebook();
         PageInfo<Book> pageInfo=new PageInfo<>(bookList);
         map.put("booklist",pageInfo);
         map.put("currentPage",currentPage);
-        return new ModelAndView("book/booklist");
-    }
-
-    @GetMapping("/updatebook")
-    public ModelAndView updatebook(Map<String,Object> map){
-
-            map.put("url","/booklist");
-            return new ModelAndView("common/success",map);
-
-
+        return new ModelAndView("book/notebook");
     }
 }

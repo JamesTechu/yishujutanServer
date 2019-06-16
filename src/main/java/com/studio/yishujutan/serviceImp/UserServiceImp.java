@@ -6,6 +6,8 @@ import com.studio.yishujutan.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImp implements UserService {
 
@@ -30,5 +32,10 @@ public class UserServiceImp implements UserService {
     @Override
     public void register(User user) {
         userDao.register(user);
+    }
+
+    @Override
+    public List<User> getAlluser() {
+        return userDao.getAlluser();
     }
 }

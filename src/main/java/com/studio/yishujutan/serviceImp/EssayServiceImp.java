@@ -64,5 +64,10 @@ public class EssayServiceImp implements EssayService {
         return essayDao.selectEssayByEssayId(essay_id);
     }
 
+    @Override
+    public List<Essay> getAllessay() {
+        return essayDao.getAllessay();
+    }
+
 
 }

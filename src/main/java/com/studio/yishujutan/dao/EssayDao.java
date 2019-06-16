@@ -38,4 +38,7 @@ public interface EssayDao {
 
     //根据circle_id获取贴子
     List<Essay> selectEssaysByCircleId(@Param("circle_id")String circle_id, @Param("number1")int number1, @Param("number2")int number2);
+
+    //查询所有的帖子
+    List<Essay> getAllessay();
 }

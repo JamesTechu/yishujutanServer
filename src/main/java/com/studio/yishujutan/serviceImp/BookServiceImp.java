@@ -17,7 +17,6 @@ public class BookServiceImp implements BookService {
     @Resource
     BookDao bookDao;
 
-    private String Adress="http://127.0.0.1:8080/";
 
     @Override
     public List<Book> getBookInformation(){
@@ -43,24 +42,13 @@ public class BookServiceImp implements BookService {
 
     @Override
     public List<Book> findAll() {
-        //PageHelper.startPage(currentPage, pageSize);
         List<Book> bookList=bookDao.getAllbook();
-//        JSONArray jsonArray = new JSONArray();
-//        Book book;
-//        JSONObject jsonObject;
-//        for (int i = 0; i < bookList.size(); i++) {
-//            jsonObject = new JSONObject();
-//            book = bookList.get(i);
-//            jsonObject.put("book_id", book.getBook_id());
-//            jsonObject.put("book_name", book.getBook_name());
-//            jsonObject.put("issue_date", book.getIssue_date());
-//            jsonObject.put("book_picture", Adress + book.getBook_picture());
-//            jsonObject.put("user_id", book.getUser_id());
-//            jsonArray.add(jsonObject);
-//        }
-//        List<Book> bookList1=jsonArray.toJavaList(Book.class);
-
         return bookList;
+    }
+
+    @Override
+    public List<Book> getAllnotebook() {
+        return bookDao.getAllnotebook();
     }
 
 

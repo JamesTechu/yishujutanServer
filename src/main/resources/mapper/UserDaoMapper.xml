@@ -20,4 +20,8 @@
         insert into user (user_id,nickname,icon) values (#{user_id},#{nickname},#{icon})
     </insert>
 
+    <select id="getAlluser" resultType="com.studio.yishujutan.entity.User">
+        select * from user
+    </select>
+
 </mapper>

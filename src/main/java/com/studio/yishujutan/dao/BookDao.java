@@ -15,4 +15,5 @@ public interface BookDao {
     List<Book> getBookContent(String book_id);    //通过书籍名称获取书籍
     List<Book> getNoteInformation();  //获取笔记的信息
     List<Book> getAllbook();
+    List<Book> getAllnotebook();
 }

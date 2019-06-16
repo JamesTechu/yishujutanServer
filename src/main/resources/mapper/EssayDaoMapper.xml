@@ -58,6 +58,12 @@
         select * from essay where essay_id = #{essay_id}
     </select>
 
+    <select id="getAllessay" resultType="com.studio.yishujutan.entity.Essay">
+        select *
+        from essay
+        ORDER BY issue_date
+    </select>
+
 
 
 </mapper>

@@ -13,6 +13,7 @@ public interface BookService {
     List<Book> getBookContent(String book_id);  //通过书名查询书籍
     List<Book> getNoteInformation(); //获取笔记
     List<Book> findAll();
+    List<Book> getAllnotebook();
 
 
 }

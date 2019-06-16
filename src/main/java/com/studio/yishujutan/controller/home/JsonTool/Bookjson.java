@@ -25,6 +25,7 @@ public class Bookjson {
                 result.put("book_category",book.getBook_category());
                 result.put("book_press",book.getBook_press());
                 result.put("issue_date",book.getIssue_date());
+                result.put("book_description",book.getBook_description());
                 return result;
             }
 }

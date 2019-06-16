@@ -3,6 +3,8 @@ package com.studio.yishujutan.dao;
 import com.studio.yishujutan.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface UserDao {
 
@@ -16,4 +18,6 @@ public interface UserDao {
 
     //注册
     void register(User user);
+
+    List<User> getAlluser();
 }

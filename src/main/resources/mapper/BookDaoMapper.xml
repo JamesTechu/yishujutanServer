@@ -20,4 +20,7 @@
     <select id="getAllbook" resultType="com.studio.yishujutan.entity.Book">
       select * from book where book_status = 0  ORDER BY issue_date
     </select>
+    <select id="getAllnotebook" resultType="com.studio.yishujutan.entity.Book">
+      select * from book where book_status = 1  ORDER BY issue_date
+    </select>
 </mapper>

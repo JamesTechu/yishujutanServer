@@ -1,11 +1,11 @@
 <html>
-<#include "common/header.ftl">
+<#include "../common/header.ftl">
 
 <body>
 <div id="wrapper" class="toggled">
 
     <#--边栏sidebar-->
-    <#include "common/nav.ftl">
+    <#include "../common/nav.ftl">
 
     <#--主要内容content-->
     <div id="page-content-wrapper">
@@ -15,13 +15,13 @@
                     <table class="table table-bordered table-condensed">
                         <thead>
                         <tr>
-                            <th>图书id</th>
-                            <th>图书图片</th>
-                            <th>图书名字</th>
+                            <th>笔记id</th>
+                            <th>笔记图片</th>
+                            <th>笔记名字</th>
                             <th>发布者</th>
                             <th>发布时间</th>
                             <th>审核状态</th>
-                            <th colspan="2">审核</th>
+                            <th colspan="2">操作</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -33,8 +33,9 @@
                                 <td>${book.book_name}</td>
                                 <td>${book.user_id}</td>
                                 <td>${book.issue_date}</td>
-                                <td><a href="#">通过</a></td>
-                                <td><a href="#">驳回</a></td>
+                                <td>通过</td>
+                                <td><a href="#">审核</a></td>
+                                <td><a href="#">删除</a></td>
                             </tr>
                         </#list>
                         </tbody>
@@ -45,13 +46,13 @@
                         <#if currentPage lte 1>
                             <li class="disabled"><a href="#">上一页</a></li>
                         <#else >
-                            <li><a href="/booklist?currentPage=${currentPage-1}">上一页</a></li></#if>
+                            <li><a href="/notebooklist?currentPage=${currentPage-1}">上一页</a></li></#if>
 
                         <#list 1..booklist.getPages() as index>
                             <#if currentPage==index>
                                 <li class="disabled"><a href="#">${index}</a></li>
                             <#else>
-                                <li><a href="/booklist?currentPage=${index}">${index}</a></li>
+                                <li><a href="/notebooklist?currentPage=${index}">${index}</a></li>
                             </#if>
                         </#list>
 
@@ -59,7 +60,7 @@
                             <li class="disabled"><a href="#">下一页</a></li>
                         <#else >
                             <li>
-                                <a href="/booklist?currentPage=${currentPage+1}">下一页</a>
+                                <a href="/notebooklist?currentPage=${currentPage+1}">下一页</a>
                             </li>
                         </#if>
                     </ul>
