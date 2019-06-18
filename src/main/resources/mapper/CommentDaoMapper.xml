@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.studio.yishujutan.dao.CommentDao">
+
+    <select id="getCommentsByEssayId" parameterType="String" resultType="com.studio.yishujutan.entity.Comment">
+        select * from comment where essay_id = #{essay_id}
+    </select>
+    
+    <insert id="insertComment"  parameterType="com.studio.yishujutan.entity.Comment">
+        insert into comment
+        values (#{comment_id},#{comment_content},#{essay_id},#{comment_date},#{user_id},#{comment_status})
+    </insert>
+</mapper>

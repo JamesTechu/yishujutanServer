@@ -44,6 +44,7 @@ public class JsonTool {
         jsonObject.put("have_picture", essay.getHave_picture());
         jsonObject.put("essay_picture", essay.getEssay_picture());
         jsonObject.put("user_id", essay.getUser_id());
+        jsonObject.put("issue_date", essay.getIssue_date());
 
         return jsonObject;
     }
